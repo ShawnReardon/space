@@ -8,9 +8,11 @@ sprites.onDestroyed(SpriteKind.Enemy, function (sprite) {
     console.log("BANG")
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
+    music.bigCrash.play()
     otherSprite.destroy(effects.fire, 500)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    music.knock.play()
     info.changeLifeBy(-1)
     if (info.life() == 0) {
         game.over(false)
